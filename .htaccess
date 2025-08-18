@@ -1,0 +1,12 @@
+RewriteEngine On
+
+Options -Indexes
+DirectoryIndex index.php
+
+# RewriteCond %{REQUEST_FILENAME} -d
+# RewriteRule ^.*$ /bug_report [R=302,L]
+
+RewriteBase /bug_report/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
