@@ -57,6 +57,14 @@
             return $this;
         }
 
+        public function count($table, $column = '*')
+        {
+            $sql = "SELECT COUNT($column) FROM $table";
+
+            $this->query[] = $sql;
+            return $this;
+        }
+
         public function where(array $query_array) // 0.Column table 1.Value 2.Logic symbol (= < > and more) 3.Operation (AND OR) !! if you want some WHERE create two-dimensional array!! 
         {                                                 // where([["email", 'qwer01@mail.ru', '=', 'OR'], ['id', '4', '<'], ['login', 'james']]) OR where([['login', 'james']])
             
@@ -196,6 +204,22 @@
             $this->prepare_query($sql);
 
             $this->reset_variable();
+        }
+
+        // ___________PAGINATE_________________
+
+        public function paginate(int $count_recording, int $page = 1)
+        {
+            if(!is_numeric($page) || $page < 0){
+                $page = 1;
+                $sql = "LIMIT $count_recording OFFSET 0";
+            }
+            else{
+                $sql = "LIMIT $count_recording OFFSET " . ($page - 1)*$count_recording;
+            }
+
+            $this->query[] = $sql;
+            return $this;
         }
 
         // ___________HELPER METHODS___________

@@ -9,24 +9,6 @@
             $this->routes[] = compact('request', 'route', 'controller');
         }
 
-        // public function dispatch($request, $path)
-        // {
-        //     foreach($this->routes as $route){
-        //         $rule =  preg_replace('#\{\w+\}#', '([^\/]+)', $route['route']);
-        //         if($request == $route['request'] && preg_match("#^$rule$#", $path, $matches) && preg_match_all('#\{(\w+)\}#', $route['route'], $key)){
-        //             array_shift($matches);
-        //             array_shift($key);
-        //             return call_user_func_array($route['controller'], array_combine($key[0], $matches));
-        //         }
-
-        //         if($request == $route['request'] && $path == $route['route']){
-        //             return call_user_func($route['controller']);
-        //         }
-        //     }
-
-        //     return 'error';
-        // }
-
         public function dispatch($request, $path)
         {
             foreach($this->routes as $route){
@@ -40,11 +22,6 @@
                 if($request == $route['request'] && $path == $route['route']){
                     return call_user_func($route['controller']);
                 }
-
-                // if(is_dir($path)){
-                //     header("Location: /bug_report");
-                //     exit();
-                // }
             }
 
             return 'error';

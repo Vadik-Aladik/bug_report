@@ -27,6 +27,11 @@
                 exit();
             }
         }
+
+        // public function check_record_availability_edit()
+        // {
+            
+        // }
     }
 
 ?>

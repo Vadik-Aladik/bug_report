@@ -48,11 +48,6 @@
 
 <?php 
 
-    // if(isset($_SESSION['errors_msg']) || isset($_SESSION['old_data'])){
-    //     unset($_SESSION['errors_msg']);
-    //     unset($_SESSION['old_data']);
-    // }
-
     destroy_message();
 
 ?>

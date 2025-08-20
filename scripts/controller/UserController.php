@@ -43,7 +43,7 @@
             if($sign_in && $password_verify && $csrf->checkToken($_POST['token'])){
                 auth($auth_user);
                 destroy_message();
-                header("Location: /bug_report");
+                header("Location: /bug_report?page=1");
                 exit();
             }
             else if($sign_in && $csrf->checkToken($_POST['token'])){
@@ -92,7 +92,7 @@
 
                 auth($new_user);
                 destroy_message();
-                header("Location: /bug_report");
+                header("Location: /bug_report?page=1");
                 exit();
             }
             else{
